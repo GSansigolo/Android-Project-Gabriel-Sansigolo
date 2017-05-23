@@ -33,7 +33,7 @@ public class MainActivityDraw extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     MarkerList markers = new MarkerList();
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,51 @@ public class MainActivityDraw extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        markers.getMarkers();
+
+        List<String> descriptionName = markers.AllMarkers();
+
+        ArrayAdapter<String> adapterMarker = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, descriptionName);
+
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        spinner.setAdapter(adapterMarker);
+
+    }
+
+    public void changeActivity (View view){
+
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        String descriptionName = spinner.getSelectedItem().toString();
+        Marker selectedMarker = markers.findMarkers(descriptionName);
+
+        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+        //i.putExtra() -> vou ter que colocar um extra pro nome, um pro lat e outro pro long...
+        //ver link -> http://stackoverflow.com/questions/3913592/start-an-activity-with-a-parameter
+
+        i.putExtra("descriptionName", (selectedMarker.getDescription()));
+        i.putExtra("lat", (selectedMarker.getLat()));
+        i.putExtra("lng", (selectedMarker.getLon()));
+
+        startActivity(i);
+    }
+
+    public void changeActivity2 (View view){
+
+        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+        //i.putExtra() -> vou ter que colocar um extra pro nome, um pro lat e outro pro long...
+        //ver link -> http://stackoverflow.com/questions/3913592/start-an-activity-with-a-parameter
+
+        Double latitude = 0.0;
+        Double longitude = 0.0;
+
+        i.putExtra("descriptionName", ("Você Está Aqui."));
+        i.putExtra("lat",latitude);
+        i.putExtra("lng",longitude);
+
+        startActivity(i);
     }
 
     @Override

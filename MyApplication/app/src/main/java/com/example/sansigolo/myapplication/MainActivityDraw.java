@@ -91,18 +91,13 @@ public class MainActivityDraw extends AppCompatActivity
 
     public void changeActivity2 (View view){
 
-        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
-        //i.putExtra() -> vou ter que colocar um extra pro nome, um pro lat e outro pro long...
-        //ver link -> http://stackoverflow.com/questions/3913592/start-an-activity-with-a-parameter
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-        Double latitude = 0.0;
-        Double longitude = 0.0;
+        String descriptionName = spinner.getSelectedItem().toString();
+        Marker selectedMarker = markers.findMarkers(descriptionName);
 
-        i.putExtra("descriptionName", ("Você Está Aqui."));
-        i.putExtra("lat",latitude);
-        i.putExtra("lng",longitude);
+        selectedMarker.getwikipedia();
 
-        startActivity(i);
     }
 
     @Override
@@ -143,19 +138,7 @@ public class MainActivityDraw extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -28,6 +28,11 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
 
 public class MainActivityDraw extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -89,14 +94,17 @@ public class MainActivityDraw extends AppCompatActivity
         startActivity(i);
     }
 
-    public void changeActivity2 (View view){
+    //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+    public void OpenUrl (View view) {
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         String descriptionName = spinner.getSelectedItem().toString();
         Marker selectedMarker = markers.findMarkers(descriptionName);
 
-        selectedMarker.getwikipedia();
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://"+selectedMarker.getwikipedia()));
+        startActivity(browserIntent);
 
     }
 
@@ -125,9 +133,9 @@ public class MainActivityDraw extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+       //if (id == R.id.action_settings) {
+         //   return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
@@ -138,7 +146,13 @@ public class MainActivityDraw extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
+        if (id == R.id.ComprarPasagens) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.onthegotours.com/Wonders-of-the-World"));
+            startActivity(browserIntent);
+        }else if(id == R.id.Website){
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://en.wikipedia.org/wiki/Seven_Wonders_of_the_Ancient_World"));
+            startActivity(browserIntent);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

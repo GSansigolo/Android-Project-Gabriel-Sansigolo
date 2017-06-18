@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+
+<group android:checkableBehavior="single">
+    <!--android:icon="@drawable/ic_menu_nomedaimagem-->
+        <item
+             android:id="@+id/Website"
+             android:title="Página Web" />
+         <item
+             android:id="@+id/ComprarPasagens"
+             android:title="Comprar Passagens" />
 
     </group>
 
-</menu>
+ </menu>
+

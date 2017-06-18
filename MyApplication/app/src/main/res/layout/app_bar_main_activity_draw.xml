@@ -29,7 +29,10 @@
         android:layout_height="58dp"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:onClick="changeActivity2"
-        app:srcCompat="@android:drawable/ic_dialog_map" />
+        android:autoLink="web"
+        android:clickable="true"
+        android:onClick="changeActivity"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+         />
 
 </android.support.design.widget.CoordinatorLayout>

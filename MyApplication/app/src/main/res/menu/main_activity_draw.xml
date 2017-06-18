@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.sansigolo.myapplication.MainActivityDraw"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/Website"
+        android:onClick="OpenUrlSite"
+        android:title="Página Web" />
+    <item
+        android:id="@+id/ComprarPasagens"
+        android:onClick="OpenUrlPass"
+        android:title="Comprar Passagens" />
+    -->
 </menu>

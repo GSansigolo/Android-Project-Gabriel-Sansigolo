@@ -15,7 +15,7 @@ public class Marker {
         this.lat = lat;
         this.lon = lng;
         this.description = geoname;
-        this.wikipedia = wikipedia;
+        this.wikipedia = url;
     }
 
     public String getwikipedia() {
